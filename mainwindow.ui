@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>723</width>
-    <height>507</height>
+    <width>830</width>
+    <height>762</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -31,7 +31,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>30</y>
+      <y>40</y>
       <width>171</width>
       <height>151</height>
      </rect>
@@ -41,7 +41,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>190</y>
+      <y>250</y>
       <width>60</width>
       <height>16</height>
      </rect>
@@ -54,17 +54,17 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>210</y>
+      <y>310</y>
       <width>171</width>
-      <height>131</height>
+      <height>171</height>
      </rect>
     </property>
    </widget>
    <widget class="QPushButton" name="init_button">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>360</y>
+      <x>110</x>
+      <y>530</y>
       <width>91</width>
       <height>32</height>
      </rect>
@@ -76,8 +76,8 @@
    <widget class="QPushButton" name="step_button">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>400</y>
+      <x>110</x>
+      <y>610</y>
       <width>91</width>
       <height>32</height>
      </rect>
@@ -90,7 +90,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>370</y>
+      <y>540</y>
       <width>60</width>
       <height>16</height>
      </rect>
@@ -103,7 +103,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>400</y>
+      <y>620</y>
       <width>60</width>
       <height>16</height>
      </rect>
@@ -120,21 +120,136 @@
      <rect>
       <x>260</x>
       <y>10</y>
-      <width>60</width>
+      <width>91</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>输出结果</string>
+     <string>Running state</string>
     </property>
    </widget>
    <widget class="QTextEdit" name="result_textedit">
     <property name="geometry">
      <rect>
       <x>260</x>
-      <y>30</y>
-      <width>441</width>
-      <height>401</height>
+      <y>40</y>
+      <width>261</width>
+      <height>151</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>200</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Load Queue</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="load_textedit">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>230</y>
+      <width>261</width>
+      <height>151</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>200</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Store Queue</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="store_textedit">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>230</y>
+      <width>231</width>
+      <height>151</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>400</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Reservation</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="reser_textedit">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>430</y>
+      <width>261</width>
+      <height>221</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>400</y>
+      <width>54</width>
+      <height>12</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Registers</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="regis_textedit">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>430</y>
+      <width>231</width>
+      <height>221</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>10</y>
+      <width>54</width>
+      <height>12</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Memory</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="memory_textedit">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>40</y>
+      <width>231</width>
+      <height>151</height>
      </rect>
     </property>
    </widget>
@@ -144,8 +259,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>723</width>
-     <height>22</height>
+     <width>830</width>
+     <height>23</height>
     </rect>
    </property>
   </widget>

@@ -69,6 +69,7 @@ ExpItem generate_expitem(int o) {
     item.order = o;
     item.op = ins[o].op;
     item.i = ins[o].i;
+    item.j = item.k = 0;
     item.j_ = item.k_ = 0;
     for (int i = 0; i < add_stack_size; ++i)
         if (add_stack[i].first) {
@@ -104,6 +105,7 @@ LdItem generate_lditem(int o) {
     item.order = o;
     item.op = ins[o].op;
     item.i = ins[o].i;
+    item.j = 0;
     item.j_ = 0;
     for (int i = 0; i < store_stack_size; ++i)
         if (store_stack[i].first) {
@@ -124,6 +126,7 @@ StItem generate_stitem(int o) {
     item.order = o;
     item.op = ins[o].op;
     item.j = ins[o].j;
+    item.i = 0;
     item.i_ = 0;
     for (int i = 0; i < add_stack_size; ++i)
         if (add_stack[i].first) {

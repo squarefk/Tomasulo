@@ -89,7 +89,6 @@ QString show_time(int time) {
 QString generate_result_textedit(){
     QString result = "";
 
-    result += "Running state:\n";
     for (int i = 1; i <= ins_num; ++i)
         result += show_time(run_state[i][0]) + " " + show_time(run_state[i][1]) + " " + show_time(run_state[i][2]) + "\n";
     result += "\n";
@@ -100,13 +99,12 @@ QString generate_result_textedit(){
 QString generate_load_textedit(){
     QString result = "";
 
-    result += "Load Queue:\n";
+    result += "Busy Register Cache Q\n";
     for (int i = 0; i < load_stack_size; ++i) {
         result += QString::number(load_stack[i].first) + " ";
         if (!load_stack[i].first) {result += "\n";continue;}
         result += QString::number(load_stack[i].second.i) + " ";
-        result += QString::number(load_stack[i].second.j);
-        result += "(" + QString::number(load_stack[i].second.j_) + ") ";
+        result += QString::number(load_stack[i].second.j) + " ";
         result += show_symbol(load_stack[i].second.j_);
         result += "\n";
     }
@@ -118,13 +116,12 @@ QString generate_load_textedit(){
 QString generate_store_textedit(){
     QString result = "";
 
-    result += "Store Queue:\n";
+    result += "Busy Cache Address Q\n";
     for (int i = 0; i < store_stack_size; ++i) {
         result += QString::number(store_stack[i].first) + " ";
         if (!store_stack[i].first) {result += "\n";continue;}
-        result += QString::number(store_stack[i].second.i);
-        result += "(" + QString::number(store_stack[i].second.i_) + ") ";
-        result += QString::number(store_stack[i].second.j);
+        result += QString::number(store_stack[i].second.i) + " ";
+        result += QString::number(store_stack[i].second.j) + " ";
         result += show_symbol(store_stack[i].second.i_);
         result += "\n";
     }
@@ -148,19 +145,27 @@ QString generate_memory_textedit(){
     return result;
 }
 
+QString show_op(int op_num) {
+    if (op_num == ADDD) return QString("Add");
+    if (op_num == SUBD) return QString("Sub");
+    if (op_num == MULD) return QString("Mul");
+    if (op_num == DIVD) return QString("Div");
+    if (op_num == LD) return QString("Load");
+    if (op_num == ST) return QString("Store");
+    return QString("");
+}
+
 QString generate_reser_textedit(){
     QString result = "";
 
-    result += "Reservation:\n";
+    result += "Busy Op Vi Vj Vk Qj Qk\n";
     for (int i = 0; i < add_stack_size; ++i) {
         result += QString::number(add_stack[i].first) + " ";
         if (!add_stack[i].first) {result += "\n";continue;}
-        result += QString::number(add_stack[i].second.op) + " ";
+        result += show_op(add_stack[i].second.op) + " ";
         result += QString::number(add_stack[i].second.i) + " ";
-        result += QString::number(add_stack[i].second.j);
-        result += "(" + QString::number(add_stack[i].second.j_) + ") ";
-        result += QString::number(add_stack[i].second.k);
-        result += "(" + QString::number(add_stack[i].second.k_) + ") ";
+        result += QString::number(add_stack[i].second.j) + " ";
+        result += QString::number(add_stack[i].second.k) + " ";
         result += show_symbol(add_stack[i].second.j_);
         result += " ";
         result += show_symbol(add_stack[i].second.k_);
@@ -169,12 +174,10 @@ QString generate_reser_textedit(){
     for (int i = 0; i < mult_stack_size; ++i) {
         result += QString::number(mult_stack[i].first) + " ";
         if (!mult_stack[i].first) {result += "\n";continue;}
-        result += QString::number(mult_stack[i].second.op) + " ";
+        result += show_op(mult_stack[i].second.op) + " ";
         result += QString::number(mult_stack[i].second.i) + " ";
-        result += QString::number(mult_stack[i].second.j);
-        result += "(" + QString::number(mult_stack[i].second.j_) + ") ";
-        result += QString::number(mult_stack[i].second.k);
-        result += "(" + QString::number(mult_stack[i].second.k_) + ") ";
+        result += QString::number(mult_stack[i].second.j) + " ";
+        result += QString::number(mult_stack[i].second.k) + " ";
         result += show_symbol(mult_stack[i].second.j_);
         result += " ";
         result += show_symbol(mult_stack[i].second.k_);
@@ -188,7 +191,6 @@ QString generate_reser_textedit(){
 QString generate_regis_textedit(){
     QString result = "";
 
-    result += "Registers:\n";
     for (int i = 0; i <= 10; ++i)
         result += QString::number(i) + " " + QString::number(reg[i]) + "\n";
     result += "\n";

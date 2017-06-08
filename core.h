@@ -53,7 +53,7 @@ struct StItem{
     int order;
     enum Opname op;
     int j, i_;
-    int i;
+    float i;
 };
 
 pair<bool, ExpItem> add_stack[3], mult_stack[2];
@@ -270,7 +270,7 @@ void time_step() {
             StItem* p = &store_stack[i].second;
             if (run_state[p->order][2] == time_cnt) {
                 mem[p->j] = p->i;
-                update_global(p->order, reg[p->j]);
+                update_global(p->order, mem[p->j]);
                 store_stack[i].first=false;
                 ++fin_num;
             }

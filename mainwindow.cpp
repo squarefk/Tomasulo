@@ -10,6 +10,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     connect(ui->init_button, SIGNAL(clicked(bool)), this, SLOT(init_button_clicked()));
     connect(ui->step_button, SIGNAL(clicked(bool)), this, SLOT(step_button_clicked()));
+    connect(ui->auto_button, SIGNAL(clicked(bool)), this, SLOT(auto_button_clicked()));
+
+    timer = new QTimer();
+    timer->setInterval(1000);
+    timer->start();
+    connect(timer, SIGNAL(timeout()), this, SLOT(timer_go_out()));
 }
 
 MainWindow::~MainWindow()
@@ -269,9 +275,13 @@ void MainWindow::init_button_clicked() {
     process_ins(ui->ins_textedit->toPlainText());
     process_mem(ui->mem_textedit->toPlainText());
     process_stack();
+    is_run = true;
 }
 
 void MainWindow::step_button_clicked() {
+    if (!is_run) {
+        return;
+    }
     if (fin_num < ins_num) {
         ++time_cnt;
         push_next_ins();
@@ -288,5 +298,24 @@ void MainWindow::step_button_clicked() {
         ui->cycle_label->setText(QString("已完成"));
         ui->cycle_label->setStyleSheet("QLabel { color : green; }");
         ui->result_textedit->setText(QString("总周期数：") + QString::number(time_cnt));
+        is_run = false;
     }
 }
+
+void MainWindow::timer_go_out() {
+    if (is_auto_exec) {
+        step_button_clicked();
+    }
+}
+
+void MainWindow::auto_button_clicked() {
+    if (is_auto_exec) {
+        is_auto_exec = false;
+        ui->auto_button->setText("连续执行：关");
+    }
+    else {
+        is_auto_exec = true;
+        ui->auto_button->setText("连续执行：开");
+    }
+}
+

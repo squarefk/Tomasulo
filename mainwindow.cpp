@@ -27,7 +27,7 @@ void process_ins(QString str) {
 
         if (parms.at(0) == QString("ADDD")) ins[++ins_num].op = ADDD;
         else if (parms.at(0) == QString("SUBD")) ins[++ins_num].op = SUBD;
-            else if (parms.at(0) == QString("MULTD")) ins[++ins_num].op = MULTD;
+            else if (parms.at(0) == QString("MULD")) ins[++ins_num].op = MULD;
                 else if (parms.at(0) == QString("DIVD")) ins[++ins_num].op = DIVD;
                     else if (parms.at(0) == QString("LD")) ins[++ins_num].op = LD;
                         else if (parms.at(0) == QString("ST")) ins[++ins_num].op = ST;

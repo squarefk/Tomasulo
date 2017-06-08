@@ -17,7 +17,7 @@ enum Rename{
 };
 
 enum Opname {
-    ADDD, SUBD, MULTD, DIVD, LD, ST
+    ADDD, SUBD, MULD, DIVD, LD, ST
 };
 int op_cost[] = {
     2, 2, 10, 40, 2, 2
@@ -165,7 +165,7 @@ void push_next_ins() {
             add_stack[pos] = make_pair(true, generate_expitem(next_start_num));
             ins[next_start_num].symbol = QString("Add") + QString::number(pos + 1);
             break;
-        case MULTD:
+        case MULD:
         case DIVD:
             pos = 0;
             while (mult_stack[pos].first && pos < 2) ++pos;
@@ -248,7 +248,7 @@ void time_step() {
         if (mult_stack[i].first) {
             ExpItem* p = &mult_stack[i].second;
             if (run_state[p->order][2] == time_cnt) {
-                if (p->op == MULTD) reg[p->i] = p->j * p->k;
+                if (p->op == MULD) reg[p->i] = p->j * p->k;
                 if (p->op == DIVD) reg[p->i] = p->j * p->k;
                 update_global(p->order, reg[p->i]);
                 mult_stack[i].first=false;
